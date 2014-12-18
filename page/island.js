@@ -111,75 +111,85 @@ zJS.Page.island = {
 
     _showIslandInfo: function(UpdateLevel) {
         UpdateLevel = typeof UpdateLevel !== 'undefined' ? UpdateLevel : true;
-        var id = zJS.Var.getIsland()['islandId'], cities = zJS.Var.getIsland()['cities'], _now = Math.floor((new Date()).getTime() / 1000);
+        console.log('SHOW ISLAND INFO ===');
+        var id = zJS.Var.getIsland()['islandId'],
+            cities = zJS.Var.getIsland()['cities'],
+            _now = Math.floor((new Date()).getTime() / 1000);
 
-        var users = {}, users_req = {};
+        var users = {}, users_req = {}, islands_data = {}, active_cities=0;
         if(zJS.Utils.ls.getValue('users')) {
             users = zJS.Utils.ls.getValue('users');
         }
+        if(zJS.Utils.ls.getValue('islands_data')){
+            islands_data=zJS.Utils.ls.getValue('islands_data');
+        }
 
-        $.each(cities, function(k, v) {
-            if(v.type == "city") {
-                var score = ((!users[v.ownerId]) || (!users[v.ownerId]['h']) || (users[v.ownerId]['e'] < _now)) ? '' : ' #' + users[v.ownerId]['h'];
-                var ally = ((v.ownerAllyTag) && (v.ownerAllyTag != '')) ? ' [' + v.ownerAllyTag + ']' : '';
-                var level = ((v.level) && (v.level != '')) ? '<div class="ikaeasy_levelcity">' + v.level + '</div>' : '';
-                var $cashe_city_gl = $('#cityLocation' + k);
-                var BD;
-                if ( $cashe_city_gl.hasClass("own") && score && score!='' ) {
-                    BD = ((v.level) && (v.level != '')) ? Math.floor(v.level / 4 + 3) : '';
-                }
-                else{
-                    BD = (v.level) ? Math.floor(v.level / 4 + 3)-2: false;
-                }
-                var BD_WRAP=(BD!=false)?'<span class="ikaeasy_BD"><img src="skin/resources/icon_actionpoints.png" />' +BD  + '</span>':'';
-                var $cashe_city = $('#js_cityLocation' + k + 'TitleText');
-                console.log('==>BD WRAP #1');
-                var city = $cashe_city.html() + score + ally + BD_WRAP;//
-                $cashe_city.html(city);
-                if(UpdateLevel==true) {
-                    $cashe_city_gl.append(level);
-                }
 
-                this._recalcWidth(k);
-
-                if(((!users[v.ownerId]) || (!users[v.ownerId]['h']) || (users[v.ownerId]['e'] < _now)) && (!users_req[v.ownerId])) {
-                    users_req[v.ownerId] = [k];
-
-                    $.get('http://' + top.location.host + '/index.php?view=cityDetails&destinationCityId=' + v.id + '&ajax=1', function(data) {
-                        data = $.parseJSON(data)[1][1][1];
-
-                        var score = $.trim(data.match(/id="js_selectedCityScore">([^<]+)</)[1].replace(/[\s]+/, '')),
-                            city_level = $.trim(data.match(/id="js_selectedCityLevel">([^<]+)</)[1].replace(/[\s]+/, '')),
-                            __score = score.split(/[^\d]/);
-                        var _score = __score[0];
-                        console.log(city_level);
-                        if(__score.length >= 3) {
-                            _score += '.' + __score[1][0];
-                        }
-                        for(var i = 1; i < __score.length; i++) {
-                            _score += 'k';
-                        }
-                        console.log(_score);
-                        users[v.ownerId] = {'h': _score, 's': score.replace(/[^\d]+/g, ''), 'e': _now + 43200};
-                        zJS.Utils.ls.setValue('users', users, 86400);
-
-                        $.each(users_req[v.ownerId], function(k, v) {
-                            var $cashe_name = $('#js_cityLocation' + v + 'TitleText');
-                            var name = $cashe_name.html();
-                            console.log('===> BD WRAP #2');
-                            $cashe_name.html(name + ' #' + _score + BD_WRAP);
-                            var $cashe_city_gll = $('#cityLocation' + k);
-                            this._recalcWidth(v);
-                        }.bind(this));
-
-                        this._sendWorld();
-                    }.bind(this));
-                }
-                else if(users_req[v.ownerId]) {
-                    users_req[v.ownerId].push(k);
-                }
+if(!$('.ikaez_score').length>0) {
+    $.each(cities, function(k, v) {
+        if(v.type == "city") {
+            active_cities++;
+            console.log(v.id);
+            var score = ((!users[v.ownerId]) || (!users[v.ownerId]['h']) || (users[v.ownerId]['e'] < _now)) ? '<span class="ikaez_score"></span>' : '<span class="ikaez_score"> #' + users[v.ownerId]['h'] + '</span>',
+                ally = ((v.ownerAllyTag) && (v.ownerAllyTag != '')) ? ' [' + v.ownerAllyTag + ']' : '',
+                level = ((v.level) && (v.level != '')) ? '<div class="ikaeasy_levelcity">' + v.level + '</div>' : '',
+                $cashe_city_gl = $('#cityLocation' + k),
+                BD;
+            if($cashe_city_gl.hasClass("own") && score && score != '') {
+                BD = ((v.level) && (v.level != '')) ? Math.floor(v.level / 4 + 3) : '';
             }
-        }.bind(this));
+            else {
+                BD = (v.level) ? Math.floor(v.level / 4 + 3) - 2 : false;
+            }
+            var BD_WRAP = (BD != false) ? '<span class="ikaeasy_BD"><img src="skin/resources/icon_actionpoints.png" />' + BD + '</span>' : '',
+                $cashe_city = $('#js_cityLocation' + k + 'TitleText');
+            var city = $cashe_city.html() + ally + score + BD_WRAP;
+            $cashe_city.html(city);
+            if(UpdateLevel == true) {
+                $cashe_city_gl.append(level);
+            }
+
+            this._recalcWidth(k);
+            if((((!users[v.ownerId]) || (!users[v.ownerId]['h']) || (users[v.ownerId]['e'] < _now)) && (!users_req[v.ownerId]))) {
+                users_req[v.ownerId] = [k];
+                $.get('http://' + top.location.host + '/index.php?view=cityDetails&destinationCityId=' + v.id + '&ajax=1', function(data) {
+                    data = $.parseJSON(data)[1][1][1];
+
+                    var score = $.trim(data.match(/id="js_selectedCityScore">([^<]+)</)[1].replace(/[\s]+/, '')),
+                    //city_level = $.trim(data.match(/id="js_selectedCityLevel">([^<]+)</)[1].replace(/[\s]+/, '')),
+                        __score = score.split(/[^\d]/);
+                    var _score = __score[0];
+
+                    if(__score.length >= 3) {
+                        _score += '.' + __score[1][0];
+                    }
+                    for(var i = 1; i < __score.length; i++) {
+                        _score += 'k';
+                    }
+                    users[v.ownerId] = {'h': _score, 's': score.replace(/[^\d]+/g, ''), 'e': _now + 43200};
+                    zJS.Utils.ls.setValue('users', users, 86400);
+
+                    $.each(users_req[v.ownerId], function(k, v) {
+                        var $cashe_score = $('#js_cityLocation' + v + 'TitleText span.ikaez_score');
+                        $cashe_score.html('#'+_score);
+                        //var $cashe_city_gll = $('#cityLocation' + k);
+                        this._recalcWidth(v);
+                    }.bind(this));
+
+                    this._sendWorld();
+                }.bind(this));
+            }
+            else if(users_req[v.ownerId]) {
+                users_req[v.ownerId].push(k);
+            }
+        }
+    }.bind(this));
+}
+
+
+        if(islands_data[id] && parseInt(islands_data[id]['count'])!=active_cities){
+            this._sendWorld(true);
+        }
 
         $('#cities').find('div.islandfeature div.scroll_img').each(function() {
             var w = 9;
@@ -200,10 +210,16 @@ zJS.Page.island = {
         $(obj).css({width: w, left: 55 - w / 2});
     },
 
-    _sendWorld: function() {
+    _sendWorld: function(force) {
+        console.log(force);
+        force = typeof force !== 'undefined' ? force : false;
+        var islands_data = {}, active_cities=0;
+        if(zJS.Utils.ls.getValue('islands_data')) {
+            islands_data = zJS.Utils.ls.getValue('islands_data');
+        }
+        console.log('send map');
         var id = zJS.Var.getIsland()['islandId'], cities = zJS.Var.getIsland()['cities'], _now = Math.floor((new Date()).getTime() / 1000) - 3;
-
-        if(!zJS.Utils.ls.getValue('island_' + id)) {
+        if(!islands_data[id] || force===true) {
             var score = {},
                 users = zJS.Utils.ls.getValue('users'),
                 data = zJS.Var.getIsland(),
@@ -212,9 +228,12 @@ zJS.Page.island = {
 
             $.each(cities, function(k, v) {
                 if(v.type == "city") {
-                    if((!users[v.ownerId]) || (!users[v.ownerId]['h']) || (users[v.ownerId]['e'] < _now)) {
-                        ok = false;
-                        return false;
+                    active_cities++;
+                    if(force!==true) {
+                        if((!users[v.ownerId]) || (!users[v.ownerId]['h']) || (users[v.ownerId]['e'] < _now)) {
+                            ok = false;
+                            return false;
+                        }
                     }
 
                     score[v.ownerId] = users[v.ownerId]['s'];
@@ -222,6 +241,7 @@ zJS.Page.island = {
             }.bind(this));
 
             if(!ok) {
+                console.log('map: !ok');
                 return;
             }
 
@@ -232,7 +252,8 @@ zJS.Page.island = {
             postJSON('http://ikalogs.ru/common/world/', data);
 
             // zJS.Utils.askms({type : 'ajax', url : 'http://ikalogs.ru/common/world/', 'method' : 'post', vars : data}, false);
-            zJS.Utils.ls.setValue('island_' + id, true, 86400 * 2);
+            islands_data[id]={'status': true, 'count':active_cities};
+            zJS.Utils.ls.setValue('islands_data', islands_data, 86400 * 2);
         }
     },
 

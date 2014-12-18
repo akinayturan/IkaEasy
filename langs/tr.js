@@ -2,47 +2,47 @@ if(typeof langs == "undefined") {
     var langs = {};
 }
 
-langs.en = {
+langs.tr = {
     'ikaeasy_link': 'https://www.facebook.com/ikariam.easy',
     'movements':{
-        all: 'all',
+        all: 'hepsi',
         transport: 'transport',
         plunder: 'plunder',
         blockade: 'blockade',
-        deployarmy: 'deploy army',
+        deployarmy: 'birimleri terhis et',
         deployfleet: 'deploy fleet',
-        defend: 'defend',
-        defend_port: 'defend port',
-        occupy: 'occupy',
-        trade: 'trade'
+        defend: 'savun',
+        defend_port: 'limanı savun',
+        occupy: 'işgal',
+        trade: 'ticaret'
     },
     'char_day': 'd',
     'char_hour': 'h',
     'char_minute': 'm',
     'char_second': 's',
-    'WillBeFullIn': 'Be filled in',
-    'per_day': "Per day",
-    'per_week': "Per week",
-    'per_month': "Per month",
-    'left': "Left",
-    'hours': "hours",
-    'days': "days",
-    'months': "months",
-    'years': "years",
-    'MessagePlaceholder': "Click CTRL + Enter to send message",
-    'ConfirmDowngrade': "Confirm downgrading of building",
-    'Circular_message': "Message to everyone",
-    'Ally_members': "Alliance",
-    'Attack_All': "All",
-    'Attack_Half': "Half",
-    'Attack_Nothing': "Nothing",
-    'Required': "Required:",
-    'Next_Level': "Next Level:",
-    'Messages': "Messages",
+    'WillBeFullIn': 'Tamamlanması için:',
+    'per_day': "Her gün",
+    'per_week': "Her hafta",
+    'per_month': "Her ay",
+    'left': "Kalan",
+    'hours': "saat",
+    'days': "gün",
+    'months': "ay",
+    'years': "yıl",
+    'MessagePlaceholder': "CTRL ye tıkla ve mesajı göndermek için Enter a tıkla",
+    'ConfirmDowngrade': "Binayı yıkmak için onayla",
+    'Circular_message': "Herkese mesaj gönder",
+    'Ally_members': "ittifak",
+    'Attack_All': "Hepsi",
+    'Attack_Half': "Yarısı",
+    'Attack_Nothing': "Hiçbiri",
+    'Required': "Gerekli:",
+    'Next_Level': "Sonraki Seviye: ",
+    'Messages': "Mesajlar",
     'Agora': "Agora",
-    'Treaty': "Treaty",
+    'Treaty': "Antlaşma",
     'Alliance': "Board",
-    'Transport': "Transport goods!",
+    'Transport': "Kaynakları taşı!",
     'Send_General_Log': "Send log to ally",
     'Send_General_Log_Header': "Attacks on alliance members",
 
@@ -57,7 +57,7 @@ langs.en = {
     'ikalogs': {
         'save_log': 'Save log',
         'analyze': 'Analyze',
-        'each': 'Every',
+        'each': 'Her seferinde',
         'help_bw': 'Seperate individual rounds with a comma, or a range of rounds with a dash.',
 
         'get_info': 'Getting data',
@@ -68,7 +68,7 @@ langs.en = {
         'open_report': 'Open log',
 
         'saving_failed': 'Failed to save log',
-        'repeat': 'Try again',
+        'repeat': 'Tekrar deneyin',
 
         'auth': {
             'not_logged': 'You are not logged on Ikalogs'
@@ -83,5 +83,5 @@ langs.en = {
         }
     },
 
-    'Transporter': 'Transporter'
+    'Transporter': 'Nakliyat'
 };

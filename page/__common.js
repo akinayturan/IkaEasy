@@ -16,6 +16,7 @@ zJS.Page.__common = {
         this._nextCity();
         this._addOtherButtons();
         this._changeForumBtn();
+        this._addIkaEasylinks();
         this._getProduction();
         this._getFinance();
         this._setFinance();
@@ -64,16 +65,23 @@ zJS.Page.__common = {
     //}
 },
     _checkUpdates: function(){
+        $("#js_GlobalMenu_military").addClass('premiumactive');
+
+        chrome.storage.sync.get('last_generalAdvisor_notification', function(data) {
+            console.log(data);
+        });
         if($("a.premiumactive").length || $("a.normalactive").length){//@todo add non premium active & add what advisor
             console.log('====HAVE NEWS====');
-            var link = document.createElement('link');
-            link.type = 'image/x-icon';
-            link.rel = 'shortcut icon';
-            link.href = 'http://www.iconj.com/ico/x/k/xknwndqq9w.ico';
-            document.getElementsByTagName('head')[0].appendChild(link);
-            new Notification('IkaEasy: new notification', {
-                icon: '/images/advisors/militaryAdvisor.png'//@todo change link
-                //body: message
+            chrome.storage.sync.set({'last_generalAdvisor_notification': zJS.Utils.getDateNow()}, function() {
+                var link = document.createElement('link');
+                link.type = 'image/x-icon';
+                link.rel = 'shortcut icon';
+                link.href = 'http://www.iconj.com/ico/x/k/xknwndqq9w.ico';
+                document.getElementsByTagName('head')[0].appendChild(link);
+                new Notification('IkaEasy: new notification', {
+                    icon: chrome.extension.getURL('images/advisors/militaryAdvisor.png')//@todo change link
+                    //body: message
+                });
             });
         }
         else{
@@ -187,22 +195,23 @@ zJS.Page.__common = {
      */
     _setFinance: function() {
         console.time('_setFinance');
-        var LocFinance = zJS.Utils.getLxocFinance();
+        var LocFinance = zJS.Utils.getLocFinance();
         var value = localStorage.getItem(LocFinance),
             np_char = 'ikaeasy_green';
         if(value < 0)
             np_char = 'red';
-        //console.log(value);
         $("#js_GlobalMenu_gold").append('<span id="IkaEasy_Gold_per_hour" class="ikaeasy_delet_me ' + np_char + '">' + zJS.Utils.formatNumber(value) + '</span>');
         console.timeEnd('_setFinance');
     },
 
     _changeForumBtn: function() {
-        console.time('_changeForumBtn');
         $('#GF_toolbar').find('li.forum a')[0].href = 'http://board.' + zJS.Utils.getServerDomain() + '.ikariam.gameforge.com/index.php?page=Index';
-        console.timeEnd('_changeForumBtn');
     },
-
+    _addIkaEasylinks: function(){
+        var $cashe_el=$('#GF_toolbar').find('li.ikhelp:not(.ikaez_completed)');
+        $cashe_el.before('<li class="ikaez_fb_link"><a class="noViewParameters" target="_blank" href="'+zJS.Lang.ikaeasy_link+'" title="IkaEasy"> IkaEasy</a></li>');
+        $cashe_el.addClass('ikaez_completed');
+    },
     _addOtherButtons: function() {
         console.time('_addOtherButtons');
         if(zJS.Var.getAllyId()) {

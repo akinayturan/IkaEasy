@@ -20,7 +20,8 @@ var assignedLng = {
     'tw': 'tw',
     'de': 'de',
     'rs': 'rs',
-    'il': 'il'
+    'il': 'il',
+    'tr': 'tr'
 };
 
 var lang = assignedLng[zJS.Utils.getServerDomain()] || 'en';
