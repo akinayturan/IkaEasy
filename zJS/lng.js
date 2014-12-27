@@ -21,6 +21,7 @@ var assignedLng = {
     'de': 'de',
     'rs': 'rs',
     'il': 'il',
+    'pl': 'pl',
     'tr': 'tr'
 };
 
