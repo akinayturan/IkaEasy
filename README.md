@@ -17,7 +17,7 @@ Test extension: https://chrome.google.com/webstore/detail/ikariam-easy-test/nbga
 ##Adding new script
 Create file with custom name in directory `page`.
 
-Default temaplte of script:
+Default template of script:
 
         if (typeof zJS == "undefined") {
             zJS = {};
@@ -54,9 +54,9 @@ All other pages call by changes values of `ikariam.templateView.id` or `ikariam.
 
 
 ###How script works
-Value `dont_refresh` define if script must be reinitialize when page refreshed (by ikariam).
+Value `dont_refresh` defines if the script must be reinitialized when page refreshed (by ikariam).
 
-Function `init` calling when page execute.
+Function `init` calling when page executes.
 
 Function `refresh` by refreshing pages (e.g city change, or by timeout).
 
