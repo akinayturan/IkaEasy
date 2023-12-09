@@ -61,5 +61,9 @@ export default {
     "empire.tab_resources": "Recursos",
     "empire.tab_buildings": "Edificios",
     "empire.tab_military": "Militar",
-    "empire.tab_espionage": "Espionaje"
+    "empire.tab_espionage": "Espionaje",
+    "donate.text_1": "IkaEasy es un proyecto no comercial cuyo apoyo y desarrollo requieren tiempo y esfuerzo.",
+    "donate.text_2": "¡Tu ayuda es crítica para IkaEasy!",
+    "donate.text_3": "Las donaciones nos ayudarán a mantener la extensión actualizada!",
+    "donate.cryptocurrency": "Envíe sus donaciones a las siguientes direcciones de criptomonedas"
 };

@@ -77,11 +77,15 @@ class Templater {
         let _data = data || {};
         _data.options = Options;
 
+        const isRussianSupported = !!navigator.languages.find(x => x === 'ru-RU' || x === 'ru');
+
         let q = {
             data    : _data,
             include : this.render.bind(this),
             lget    : LANGUAGE.getLocalizedString,
             num     : formatNumber,
+            numK    : formatNumberK,
+            isRussianSupported: isRussianSupported,
             url     : (url) => PARAMS.extUrl + url,
             options : Options,
             Utils: {
@@ -130,6 +134,29 @@ function formatNumber(number, def, forceShowSign = true, separators) {
     }
 
     return ((!result) || (result === '0')) ? def : result;
+}
+
+function formatNumberK(number, def, forceShowSign = false, separators) {
+    let k = 0;
+    while (number >= 100000) {
+        number = Math.floor(number / 1000);
+        k++;
+    }
+
+    def = def || '0';
+    let sep = (typeof PARAMS.Front !== 'undefined') ? { thousand: PARAMS.Front.data.localizationStrings.thousandSeperator, decimal: PARAMS.Front.data.localizationStrings.decimalPoint } : separators;
+    let result = ((number || "") + "").replace(/(\d)(?=(?:\d{3})+(?:$|\.|,))/g, "$1" + sep.thousand).replace(".", sep.decimal);
+
+    if ((forceShowSign) && (number > 0)) {
+        result = `+${result}`;
+    }
+
+    let response = ((!result) || (result === '0')) ? def : result;
+    while (k-- > 0) {
+        response += 'k';
+    }
+
+    return response;
 }
 
 function getText(url, callback, async) {

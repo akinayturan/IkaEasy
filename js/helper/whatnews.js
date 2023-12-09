@@ -47,6 +47,14 @@ class WhatNews {
 
                         options.set(name, $input.prop('checked'));
                     });
+
+                    win.$el.find('.donate-copy').click((e) => {
+                        const $el = $(e.currentTarget);
+                        const text = $el.data('clipboard-text');
+
+                        // copy to clipboard
+                        navigator.clipboard.writeText(text);
+                    });
                 } catch(e) {
                     console.error(e);
                     win && win.remove();

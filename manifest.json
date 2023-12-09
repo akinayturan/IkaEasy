@@ -26,12 +26,12 @@
    },
    "name": "IkaEasy",
    "description": "RandGor's transport fix for IkaEasy",
-   "permissions": [ "tabs", "storage", "notifications", "background", "alarms" ],
+   "permissions": [ "tabs", "storage", "notifications", "alarms" ],
    "sandbox": {
       "pages": [ "sandbox.html" ]
    },
    "update_url": "https://clients2.google.com/service/update2/crx",
-   "version": "3.1.0.16",
+   "version": "3.1.0.23",
    "web_accessible_resources": [ {
       "matches": [ "http://*.ikariam.gameforge.com/*", "https://*.ikariam.gameforge.com/*", "https://ikalogs.ru/*", "https://*.ikalogs.ru/*" ],
       "resources": [ "inner/ikaeasy.js", "images/*", "js/page/*", "js/helper/*", "js/libs/*", "js/data/*", "js/sandbox/*", "js/const.js", "js/utils.js", "js/langs.js", "js/sandbox.js", "js/templater.js", "js/navigation.js", "js/assignedLangs.js", "js/initModule.js", "lang/*", "css/*", "icon/*", "tpl/*", "whatnews.json", "options.js", "sandbox.html" ]

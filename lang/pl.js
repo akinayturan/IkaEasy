@@ -56,5 +56,9 @@ export default {
     "empire.tab_buildings": "Budynki",
     "empire.tab_military": "Wojsko",
     "donate.patreon_button": "Pomóż IkaEasy na Patreonie",
-    "donate.patreon_text": "IkaEasy to jest projekt non-profit, a jego wsparcie i rozwój wymaga czasu i pracy. Jeśli chcesz wspierać nas i IkaEasy, subskrybuj nasz Patreon. Twoja pomoc jest bardzo ważna dla projektu."
+    "donate.patreon_text": "IkaEasy to jest projekt non-profit, a jego wsparcie i rozwój wymaga czasu i pracy. Jeśli chcesz wspierać nas i IkaEasy, subskrybuj nasz Patreon. Twoja pomoc jest bardzo ważna dla projektu.",
+    "donate.text_1": "IkaEasy to non-profitowy projekt, który wymaga czasu i wysiłku w celu wsparcia i rozwoju.",
+    "donate.text_2": "Twoje wsparcie jest kluczowe dla IkaEasy!",
+    "donate.text_3": "Dotacje pomogą nam utrzymać rozszerzenie w aktualnym stanie!",
+    "donate.cryptocurrency": "Prosimy o przekazywanie darowizn na poniższe adresy kryptowalut"
 };

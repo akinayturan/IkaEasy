@@ -51,7 +51,7 @@ class Page extends Parent {
                 _.each($('.unit_detail_icon', $tr), (icon) => {
                     let $icon = $(icon);
                     if ($icon.is('.resource_icon:not(.gold)')) {
-                        total += getInt($icon.text());
+                        total += getInt($icon.attr('title') || $icon.text());
                         res_count++;
                     }
 

@@ -5747,6 +5747,11 @@ const POSITIONS = {
         {"x": 240, "y": 118}, // positioning the icon
         {"x": 240, "y": 118} // positioning the info box
     ],
+    shrineOfOlympus: [
+        {"x": 55, "y": 20},
+        {"x": 55, "y": 20}
+    ],
+
     // construction spot
     "constructionSite": [
         {"x": 65, "y": 20},

@@ -31,5 +31,9 @@ export default {
     "diplomacy_agora": "Агора",
     "diplomacy_treaty": "Споразум",
     "diplomacy_alliance": "Форум",
-    "diplomacy_ally_members": "Савез"
+    "diplomacy_ally_members": "Савез",
+    "donate.text_1": "IkaEasy је некомерцијални пројекат који захтева време и труд за подршку и развој.",
+    "donate.text_2": "Ваша помоћ је критична за IkaEasy!",
+    "donate.text_3": "Донације ће нам помоћи да одржимо екстензију ажурном!",
+    "donate.cryptocurrency": "Молимо вас да шаљете ваше донације на следеће адресе криптовалута"
 };

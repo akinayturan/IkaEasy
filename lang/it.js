@@ -105,5 +105,9 @@ export default {
     "empire.happiness_growth_day": "Crescita per giorno",
     "empire.happiness_satisfaction": "Soddisfazione",
     "donate.patreon_button": "Aiuta IkaEasy su Patreon",
-    "donate.patreon_text": "IkaEasy è un progetto non a scopo di lucro e il suo supporto e sviluppo richiede tempo e lavoro. Se voglia supportare noi e IkaEasy, iscriviti al nostro Patreon. Il tuo aiuto è molto importante per il progetto."
+    "donate.patreon_text": "IkaEasy è un progetto non a scopo di lucro e il suo supporto e sviluppo richiede tempo e lavoro. Se voglia supportare noi e IkaEasy, iscriviti al nostro Patreon. Il tuo aiuto è molto importante per il progetto.",
+    "donate.text_1": "IkaEasy è un progetto non commerciale che richiede tempo e sforzo per essere supportato e sviluppato.",
+    "donate.text_2": "Il tuo aiuto è fondamentale per IkaEasy!",
+    "donate.text_3": "Le donazioni ci aiuteranno a mantenere l'estensione aggiornata!",
+    "donate.cryptocurrency": "Si prega di inviare le vostre donazioni ai seguenti indirizzi di criptovaluta"
 };

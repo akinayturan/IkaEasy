@@ -46,5 +46,9 @@ export default {
     "empire.tab_resources": "Kaynaklar",
     "empire.tab_buildings": "Binalar",
     "empire.tab_military": "Ordu",
-    "empire.tab_espionage": "Casusluk"
+    "empire.tab_espionage": "Casusluk",
+    "donate.text_1": "IkaEasy, destek ve geliştirme için zaman ve emek gerektiren ticari olmayan bir projedir.",
+    "donate.text_2": "Yardımınız IkaEasy için hayati önem taşımaktadır!",
+    "donate.text_3": "Bağışlar, eklentiyi güncel tutmamıza yardımcı olacak!",
+    "donate.cryptocurrency": "Bağışlarınızı aşağıdaki kripto para adreslerine gönderin"
 };

@@ -53,5 +53,9 @@ export default {
     "notif.movements_returning_text": "%TYPE% ist zurück gekommen nach %CITY%",
     "empire.tab_resources": "Ressourcen",
     "empire.tab_buildings": "Gebäude",
-    "empire.tab_military": "Militär"
+    "empire.tab_military": "Militär",
+    "donate.text_1": "IkaEasy ist ein gemeinnütziges Projekt, dessen Unterstützung und Entwicklung Zeit und Mühe erfordern.",
+    "donate.text_2": "Ihre Hilfe ist kritisch für IkaEasy!",
+    "donate.text_3": "Spenden werden uns helfen, das Add-on aktuell zu halten!",
+    "donate.cryptocurrency": "Bitte senden Sie Ihre Spenden an die folgenden Kryptowährungsadressen"
 };

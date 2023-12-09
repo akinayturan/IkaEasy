@@ -193,5 +193,9 @@ export default {
     "gov.nomokratie": "nomokratija",
     "gov.oligarchie": "oligarchija",
     "gov.technokratie": "technokratija",
-    "gov.theokratie": "teokratija"
+    "gov.theokratie": "teokratija",
+    "donate.text_1": "„IkaEasy“ yra nekomercinis projektas, reikalaujantis laiko ir pastangų palaikymui bei vystymui.",
+    "donate.text_2": "Jūsų pagalba yra kritiškai svarbi „IkaEasy“!",
+    "donate.text_3": "Aukos padės mums išlaikyti plėtinį atnaujintą!",
+    "donate.cryptocurrency": "Prašome siųsti savo aukas į šiuos kriptovaliutų adresus"
 };

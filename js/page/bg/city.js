@@ -80,6 +80,10 @@ class City extends Parent {
                 }
 
                 let b_coord = (build.completed) ? db.pos.constructionSite : db.pos[name];
+                if (!b_coord) {
+                    console.warn(`IKAEASY: Unknown building ${name}`);
+                    continue;
+                }
                 let $position = $(`#position${build.position}`);
 
                 // Создаем у каждого здания табличку для уровня, а так же блок с ресами
@@ -138,6 +142,11 @@ class City extends Parent {
                 let b_source = db.source[name];
                 let b_coord = db.pos[name];
                 let b_lvl = parseInt(build.level);
+
+                if ((!b_coord) || (!b_source)) {
+                    console.warn(`IKAEASY: Unknown building ${name}`);
+                    return;
+                }
 
                 if (build.completed) {
                     b_coord = db.pos.constructionSite;
